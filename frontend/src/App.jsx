@@ -6,7 +6,6 @@ function App() {
 
     return (
     <div style = {{maxWidth: '1000px', margin: '0 auto', padding: '20px', fontFamily: 'sans-serif'}}>
-    <h1> Narrative Node Mapper </h1>
 
     <StoryUploader onGraphDataReceived = {setStoryGraph} />
     <div style = {{ border: '2px solid #444', borderRadius: '8px', overflow: 'hidden'}}>

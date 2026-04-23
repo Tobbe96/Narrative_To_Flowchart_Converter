@@ -12,6 +12,7 @@ import {
     useNodesState,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css'
+import WaypointEdge from './WaypointEdge';
 
 const PROCESS_NODE_SIZE = {width: 240, height: 120};
 const DECISION_NODE_SIZE = {width: 260, height: 160};
@@ -105,14 +106,20 @@ const nodeTypes = {
     decision: DecisionNode,
 };
 
+const edgeTypes = {
+    waypoint: WaypointEdge,
+};
+
 const normalizeNode = (node, index) => {
     const id = String(node.id ?? node.nodeId ?? node.sceneId ?? `node-${index + 1}`);
     const label = node.data?.label ?? node.label ?? node.title ?? node.name ?? `Scene ${index + 1}`;
     const summary = node.data?.summary ?? node.summary ?? node.description ?? '';
+    const type = node.type ?? node.data?.type ?? null;
 
     return {
         ...node,
         id,
+        type,
         data: {
             ...node.data,
             label,
@@ -160,7 +167,8 @@ const classifyNodes = (nodes, edges) => {
     }, new Map());
 
     return nodes.map((node) => {
-        const isDecision = (outgoingCounts.get(node.id) ?? 0) > 1;
+        const explicitType = node.type ?? node.data?.type;
+        const isDecision = explicitType === 'decision' || (explicitType == null && (outgoingCounts.get(node.id) ?? 0) > 1);
         const dimensions = isDecision ? DECISION_NODE_SIZE : PROCESS_NODE_SIZE;
 
         return {
@@ -213,22 +221,13 @@ const getLayoutedElements = (nodes, edges, direction = 'LR') =>{
 
     const layoutedEdges = edges.map((edge) => ({
         ...edge,
-        type: 'smoothstep',
+        type: 'waypoint',
         markerEnd: {
             type: MarkerType.ArrowClosed,
             width: 22,
             height: 22,
             color: '#475569',
         },
-        labelStyle: {
-            fill: '#0f172a',
-            fontWeight: 600,
-        },
-        labelBgStyle: {
-            fill: '#ffffff',
-            fillOpacity: 0.92,
-        },
-        labelBgBorderRadius: 6,
         style: {
             stroke: '#475569',
             strokeWidth: 2,
@@ -245,7 +244,7 @@ function InteractiveFlow({initialNodes, initialEdges, onReady, registerInstance}
     const onConnect = useCallback(
         (params) => setEdges((currentEdges) => addEdge({
             ...params,
-            type: 'smoothstep',
+            type: 'waypoint',
             markerEnd: {
                 type: MarkerType.ArrowClosed,
                 color: '#475569',
@@ -269,6 +268,7 @@ function InteractiveFlow({initialNodes, initialEdges, onReady, registerInstance}
             nodes = {nodes}
             edges = {edges}
             nodeTypes = {nodeTypes}
+            edgeTypes = {edgeTypes}
             onNodesChange = {onNodesChange}
             onEdgesChange = {onEdgesChange}
             onConnect = {onConnect}

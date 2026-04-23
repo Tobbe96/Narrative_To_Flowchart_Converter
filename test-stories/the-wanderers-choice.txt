@@ -1,0 +1,27 @@
+The Wanderer's Choice
+
+Scene: The Crossroads
+You stand at a dusty crossroads as the sun begins to set. Three paths stretch before you: a northern road into dark forest, an eastern path along a glittering river, and a southern trail toward ancient ruins.
+If you choose to take the northern road, go to The Dark Forest. If you decide to follow the eastern path, go to The Riverside Camp. If you wish to travel south, go to The Ancient Ruins.
+
+Scene: The Dark Forest
+The trees close in around you as you venture north. Strange sounds echo in the darkness. You find an old lantern hanging from a branch.
+If you choose to take the lantern and press deeper, go to The Hidden Temple. If you decide to turn back, go to The Crossroads.
+
+Scene: The Riverside Camp
+A warm fire crackles beside the river. A group of travelers welcomes you and shares their supper. They speak of a hidden temple to the north, reachable only by those who know the way.
+If you choose to rest here and continue in the morning, go to The Hidden Temple. If you decide to cross the river immediately, go to The Ancient Ruins.
+
+Scene: The Ancient Ruins
+Crumbling stone walls rise from the earth around you. Among the rubble you discover an ancient map pointing north.
+If you choose to follow the map north, go to The Hidden Temple. If you decide to explore the ruins further, go to The Underground Chamber.
+
+Scene: The Hidden Temple
+A grand temple stands before you, its golden doors gleaming. You push them open and step inside. Your quest is complete. There is nothing more to do here.
+
+Scene: The Underground Chamber
+You descend into a dark chamber beneath the ruins. At the far end a glowing artifact pulses with blue light.
+If you choose to take the artifact, go to The Hidden Temple. If you decide to leave it behind, go to The Forest Exit.
+
+Scene: The Forest Exit
+You emerge from the forest onto a quiet road leading toward a distant village. The adventure ends here.
