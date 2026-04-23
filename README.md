@@ -2,6 +2,9 @@
 
 > Turn interactive fiction and gamebook stories into visual flowcharts — powered by a local AI model.
 
+> [!WARNING]
+> **Work in Progress** — This project is under active development. Expect rough edges, breaking changes, missing features, and bugs.
+
 [![Java](https://img.shields.io/badge/Java-17-orange?logo=java)](https://adoptium.net/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4.5-brightgreen?logo=springboot)](https://spring.io/projects/spring-boot)
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://react.dev/)
